@@ -193,12 +193,12 @@ static const char HEX_CHAR_ARRAY[17] = "0123456789ABCDEF";
 
 #if !defined(ESP8266)
 /**
-* convert char array (hex values) to readable string by seperator
-* buf:           buffer to convert
-* length:        data length
-* strSeperator   seperator between each hex value
-* return:        formated value as String
-*/
+ * convert char array (hex values) to readable string by seperator
+ * buf:           buffer to convert
+ * length:        data length
+ * strSeperator   seperator between each hex value
+ * return:        formated value as String
+ */
 static String byteToHexString(uint8_t *buf, uint8_t length, String strSeperator = "-")
 {
   String dataString = "";
@@ -659,8 +659,8 @@ boolean AsyncWiFiManager::startConfigPortal(char const *apName, char const *apPa
       }
       else
       {
-          if(_tryConnectDuringConfigPortal)
-            DEBUG_WM(F("Failed to connect"));
+        if(_tryConnectDuringConfigPortal)
+          DEBUG_WM(F("Failed to connect"));
       }
 
       if (_shouldBreakAfterConfig)
@@ -1121,6 +1121,15 @@ void AsyncWiFiManager::handleWifiSave(AsyncWebServerRequest *request)
   DEBUG_WM(F("Sent wifi save page"));
 
   connect = true; // signal ready to connect/reset
+}
+
+String AsyncWiFiManager::getChipID()
+{
+#if defined(ESP8266)
+  return ESP.getChipId();
+#else
+  return getESP32ChipID();
+#endif
 }
 
 // handle the info page

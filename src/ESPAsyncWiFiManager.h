@@ -138,6 +138,8 @@ public:
                       unsigned long maxConnectRetries = 1,
                       unsigned long retryDelayMs = 1000);
 
+  String getChipID();
+
   // if you want to always start the config portal, without trying to connect first
   boolean startConfigPortal(char const *apName, char const *apPassword = NULL);
   void startConfigPortalModeless(char const *apName, char const *apPassword);
