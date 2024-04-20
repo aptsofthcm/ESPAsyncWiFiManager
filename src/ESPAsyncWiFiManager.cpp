@@ -913,7 +913,9 @@ void AsyncWiFiManager::handleRoot(AsyncWebServerRequest *request)
   page += F("<h3>AsyncWiFiManager</h3>");
   if (_apMessage)
   {
-    page += F("<h2>MESSAGE: ") + FPSTR(_apMessage) +F("</h2>");
+    page += F("<h2>MESSAGE: ");
+    page += String(_apMessage);
+    page += F("</h2>");
   }
 
   page += FPSTR(HTTP_PORTAL_OPTIONS);
