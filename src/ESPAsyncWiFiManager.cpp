@@ -913,7 +913,7 @@ void AsyncWiFiManager::handleRoot(AsyncWebServerRequest *request)
   page += F("<h3>AsyncWiFiManager</h3>");
   if (_apMessage)
   {
-    page += F("<p style="color: red;">");
+    page += F("<p style=\"color: red;\">");
     page += String(_apMessage);
     page += F("</p>");
   }
